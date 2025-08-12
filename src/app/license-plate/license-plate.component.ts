@@ -8,7 +8,7 @@ import {DialogComponent} from "../dialog/dialog.component";
   standalone: true,
   templateUrl: './license-plate.component.html',
   styleUrls: ['./license-plate.component.css'],
-  imports:[CurrencyRendererPipe, DialogComponent]
+  imports:[CurrencyRendererPipe]
 })
 export class LicensePlateComponent {
 

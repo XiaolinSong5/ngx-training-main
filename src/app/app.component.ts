@@ -12,8 +12,7 @@ import {HighlightDirective} from "./highlight.directive";
   templateUrl: 'app.component.html',
   imports: [NavigationComponent,
   JumbotronComponent,
-  LicensePlateComponent,
-  HighlightDirective],
+  LicensePlateComponent],
 })
 export class AppComponent {
   licensePlates: LicensePlate[] = LICENSE_PLATES;
