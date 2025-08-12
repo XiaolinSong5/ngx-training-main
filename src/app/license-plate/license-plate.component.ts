@@ -1,13 +1,14 @@
 import {Component, Input, Output} from '@angular/core';
 import {LicensePlate} from '../license-plate';
 import {CurrencyRendererPipe} from "../currency-renderer.pipe";
+import {DialogComponent} from "../dialog/dialog.component";
 
 @Component({
   selector: 'app-license-plate',
   standalone: true,
   templateUrl: './license-plate.component.html',
   styleUrls: ['./license-plate.component.css'],
-  imports:[CurrencyRendererPipe]
+  imports:[CurrencyRendererPipe, DialogComponent]
 })
 export class LicensePlateComponent {
 
@@ -19,6 +20,7 @@ export class LicensePlateComponent {
 
   @Output()
   buttonClicked(): void {
+
     alert("Plate added to cart");
   }
 
