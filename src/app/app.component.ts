@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import {Component, inject} from '@angular/core';
 import {CALIFORNIA_PLATE, LICENSE_PLATES} from "./mock-data";
 import {LicensePlate} from "./license-plate";
 import {NavigationComponent} from "./navigation/navigation.component";
 import {JumbotronComponent} from "./jumbotron/jumbotron.component";
 import {LicensePlateComponent} from "./license-plate/license-plate.component";
 import {HighlightDirective} from "./highlight.directive";
+import {LicensePlateService} from "./services/license-plate.service";
 
 @Component({
     selector: 'app-root',
@@ -16,7 +17,7 @@ import {HighlightDirective} from "./highlight.directive";
   HighlightDirective],
 })
 export class AppComponent {
-  licensePlates: LicensePlate[] = LICENSE_PLATES;
+  licensePlates: LicensePlate[] = inject(LicensePlateService).getList();
   licensePlate: LicensePlate = CALIFORNIA_PLATE;
 showDialog = false;
   addToChat(plate: LicensePlate) {
