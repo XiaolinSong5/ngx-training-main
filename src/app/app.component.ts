@@ -17,10 +17,17 @@ import {LicensePlateService} from "./services/license-plate.service";
   HighlightDirective],
 })
 export class AppComponent {
-  licensePlates: LicensePlate[] = inject(LicensePlateService).getList();
+  licensePlates: LicensePlate[] = [];
+  service = inject(LicensePlateService);
   licensePlate: LicensePlate = CALIFORNIA_PLATE;
-showDialog = false;
+  showDialog = false;
+
+  constructor() {
+    this.service.getList()
+      .subscribe(data => this.licensePlates = data);
+  }
+
   addToChat(plate: LicensePlate) {
-this.showDialog = true;
+    this.showDialog = true;
   }
 }
