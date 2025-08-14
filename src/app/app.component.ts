@@ -8,26 +8,16 @@ import {HighlightDirective} from "./highlight.directive";
 import {LicensePlateService} from "./services/license-plate.service";
 import {Observable, Subscription} from "rxjs";
 import {AsyncPipe} from "@angular/common";
+import {RouterOutlet} from "@angular/router";
 
 @Component({
     selector: 'app-root',
   standalone: true,
   templateUrl: 'app.component.html',
-  imports: [NavigationComponent,
-    JumbotronComponent,
-    LicensePlateComponent,
-    HighlightDirective, AsyncPipe],
+  imports: [
+    RouterOutlet,
+    NavigationComponent
+  ],
 })
 export class AppComponent {
-  licensePlates$: Observable<LicensePlate[]>;
-  service = inject(LicensePlateService);
-  licensePlate: LicensePlate = CALIFORNIA_PLATE;
-  showDialog = false;
-  constructor() {
-    this.licensePlates$ = this.service.getList();
-  }
-
-  addToChat(plate: LicensePlate) {
-    this.showDialog = true;
-  }
 }
