@@ -6,30 +6,25 @@ import {JumbotronComponent} from "./jumbotron/jumbotron.component";
 import {LicensePlateComponent} from "./license-plate/license-plate.component";
 import {HighlightDirective} from "./highlight.directive";
 import {LicensePlateService} from "./services/license-plate.service";
-import {Subscription} from "rxjs";
+import {Observable, Subscription} from "rxjs";
+import {AsyncPipe} from "@angular/common";
 
 @Component({
     selector: 'app-root',
   standalone: true,
   templateUrl: 'app.component.html',
   imports: [NavigationComponent,
-  JumbotronComponent,
-  LicensePlateComponent,
-  HighlightDirective],
+    JumbotronComponent,
+    LicensePlateComponent,
+    HighlightDirective, AsyncPipe],
 })
-export class AppComponent implements OnDestroy{
-  licensePlates: LicensePlate[] = [];
+export class AppComponent {
+  licensePlates$: Observable<LicensePlate[]>;
   service = inject(LicensePlateService);
   licensePlate: LicensePlate = CALIFORNIA_PLATE;
   showDialog = false;
-  subscription!: Subscription;
   constructor() {
-    this.subscription = this.service.getList()
-      .subscribe(data => this.licensePlates = data);
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.licensePlates$ = this.service.getList();
   }
 
   addToChat(plate: LicensePlate) {
