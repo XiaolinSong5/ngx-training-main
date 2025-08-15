@@ -1,6 +1,7 @@
-import {Component, Input, Output} from '@angular/core';
+import {Component, inject, Input, Output} from '@angular/core';
 import {LicensePlate} from '../license-plate';
 import {CurrencyRendererPipe} from "../currency-renderer.pipe";
+import {CurrencyService} from "../currency-switcher/currency.service";
 
 @Component({
   selector: 'app-license-plate',
@@ -18,6 +19,7 @@ export class LicensePlateComponent {
   buttonText!: string;
 
   @Output()
+  service = inject(CurrencyService);
   buttonClicked(): void {
 
     alert("Plate added to cart");
