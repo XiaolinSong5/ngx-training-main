@@ -4,6 +4,7 @@ import {FormsModule} from '@angular/forms';
 @Component({
   selector: 'app-checkout-form',
   imports: [FormsModule],
+  standalone:true,
   templateUrl: './checkout-form.component.html',
   styleUrls: ['./checkout-form.component.css']
 })
