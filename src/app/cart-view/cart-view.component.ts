@@ -7,6 +7,7 @@ import {LicensePlateComponent} from '../license-plate/license-plate.component';
 
 @Component({
   selector: 'app-cart-view',
+  standalone: true,
   imports: [JumbotronComponent, LicensePlateComponent],
   templateUrl: './cart-view.component.html',
   styleUrls: ['./cart-view.component.css']
