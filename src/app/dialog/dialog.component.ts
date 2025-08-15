@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges
 
 @Component({
   selector: 'app-dialog',
+  standalone: true,
   templateUrl: './dialog.component.html',
   styleUrls: ['./dialog.component.css']
 })

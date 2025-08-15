@@ -7,11 +7,14 @@
         <app-license-plate [plate]="myPlate"
                            buttonText="Add to cart"
                            appHighlight
-                           class="col-md-4">
+                           class="col-md-4"
+                           (buttonClick)="addToCart($event)" >
 
         </app-license-plate>
       }
 
     </div>
   </div>
-  <dialog></dialog>
+ <app-dialog [isOpen]="showPopup" title="Item added to cart" (onClose)="showPopup = false" >
+   Thanks for shopping with us!
+ </app-dialog>

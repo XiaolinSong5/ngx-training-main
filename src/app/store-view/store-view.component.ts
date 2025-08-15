@@ -9,26 +9,34 @@ import {LicensePlateComponent} from "../license-plate/license-plate.component";
 import {HighlightDirective} from "../highlight.directive";
 import {AsyncPipe} from "@angular/common";
 import {RouterOutlet} from "@angular/router";
+import {CartService} from "../cart.service";
+import {DialogComponent} from "../dialog/dialog.component";
 
 @Component({
   selector: 'app-store-view',
   standalone: true,
   imports: [JumbotronComponent,
     LicensePlateComponent,
-    HighlightDirective, AsyncPipe],
+    HighlightDirective, AsyncPipe,
+  DialogComponent],
   templateUrl: './store-view.component.html',
   styleUrl: './store-view.component.css'
 })
 export class StoreViewComponent {
   licensePlates$: Observable<LicensePlate[]>;
   service = inject(LicensePlateService);
+  cartService: CartService = inject(CartService);
   licensePlate: LicensePlate = CALIFORNIA_PLATE;
   showDialog = false;
+  showPopup = false;
   constructor() {
     this.licensePlates$ = this.service.getList();
   }
 
-  addToChat(plate: LicensePlate) {
-    this.showDialog = true;
+  addToCart(plate: LicensePlate): void {
+    this.cartService.addToCart(plate)
+      .subscribe(() => this.showPopup = true);
   }
+
+
 }
