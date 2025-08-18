@@ -1,10 +1,10 @@
-<h2>{{plate.title}} @if(plate.onSale) {<img src="assets/sale.png"/>
+<h2>{{plate().title}} @if(plate().onSale) {<img src="assets/sale.png"/>
 }</h2>
-<img [src]="plate.picture" class="img-fluid" >
-<p>{{plate.description}}</p>
+<img [src]="plate().picture" class="img-fluid" >
+<p>{{plate().description}}</p>
 <div>
-  <h2 class="float-left">{{plate.price  | currencyRenderer:service.currency()}}</h2>
+  <h2 class="float-left">{{plate().price  | currencyRenderer:service.currency()}}</h2>
   <button class="btn btn-primary float-right" role="button" (click)="buttonClicked()">
-    {{buttonText}}
+    {{buttonText()}}
   </button>
 </div>

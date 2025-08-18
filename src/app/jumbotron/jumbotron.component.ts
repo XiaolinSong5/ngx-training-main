@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 
 @Component({
   selector: 'app-jumbotron',
@@ -7,8 +7,6 @@ import {Component, Input} from '@angular/core';
   standalone: true
 })
 export class JumbotronComponent {
-@Input()
-  title?: string;
-  @Input({required:true})
-  description?: string ;
+readonly title = input<string>();
+  readonly description = input.required<string | undefined>();
 }
