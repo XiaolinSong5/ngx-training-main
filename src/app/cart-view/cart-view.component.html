@@ -1,7 +1,7 @@
 <app-jumbotron title="My Cart" description="Your current cart contents:"></app-jumbotron>
 
 <div class="container">
-  @if (cartContents?.length === 0) {
+  @if (cartContents && cartContents.length === 0) {
     <div class="alert alert-info" role="alert">Your cart is empty</div>
   }
   <div class="row" >

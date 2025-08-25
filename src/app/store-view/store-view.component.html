@@ -1,6 +1,8 @@
  <!-- Insert jumbotron component here -->
   <app-jumbotron title="Welkome to our store" description="Browse our collection of license plates"></app-jumbotron>
   <div class="container">
+    <app-currency-switcher></app-currency-switcher>
+    the price is: {{priceInUsd / exchangeRate() | currency: currency().code}}
     <div class="row" >
       @for (myPlate of licensePlates$ | async  ; track myPlate._id){
         <!-- License plates go here -->

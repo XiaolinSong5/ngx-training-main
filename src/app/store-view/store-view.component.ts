@@ -7,10 +7,12 @@ import {NavigationComponent} from "../navigation/navigation.component";
 import {JumbotronComponent} from "../jumbotron/jumbotron.component";
 import {LicensePlateComponent} from "../license-plate/license-plate.component";
 import {HighlightDirective} from "../highlight.directive";
-import {AsyncPipe} from "@angular/common";
+import {AsyncPipe, CurrencyPipe} from "@angular/common";
 import {RouterOutlet} from "@angular/router";
 import {CartService} from "../cart.service";
 import {DialogComponent} from "../dialog/dialog.component";
+import {CurrencyService} from "../currency-switcher/currency.service";
+import {CurrencySwitcherComponent} from "../currency-switcher/currency-switcher.component";
 
 @Component({
   selector: 'app-store-view',
@@ -18,7 +20,7 @@ import {DialogComponent} from "../dialog/dialog.component";
   imports: [JumbotronComponent,
     LicensePlateComponent,
     HighlightDirective, AsyncPipe,
-  DialogComponent],
+    DialogComponent, CurrencySwitcherComponent, CurrencyPipe],
   templateUrl: './store-view.component.html',
   styleUrl: './store-view.component.css'
 })
@@ -26,6 +28,10 @@ export class StoreViewComponent {
   licensePlates$: Observable<LicensePlate[]>;
   service = inject(LicensePlateService);
   cartService: CartService = inject(CartService);
+  currencyService = inject(CurrencyService);
+  currency = this.currencyService.currentCurrency;
+  exchangeRate = this.currencyService.currentExchangeRate;
+  priceInUsd = 10;
   licensePlate: LicensePlate = CALIFORNIA_PLATE;
   showDialog = false;
   showPopup = false;
