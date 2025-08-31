@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, input} from '@angular/core';
 import {LoginService} from './login.service';
 import {Router} from "@angular/router";
 
@@ -9,13 +9,16 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-
+  logedIn = input();
   constructor(private loginService: LoginService,
               private router: Router) { }
 
   login(username: string, password: string): void {
     this.loginService.login(username, password)
-      .subscribe(() => this.router.navigateByUrl('checkout'));
+      .subscribe(() => {
+        this.router.navigateByUrl('checkout');
+        }
+        );
   }
 
 }
