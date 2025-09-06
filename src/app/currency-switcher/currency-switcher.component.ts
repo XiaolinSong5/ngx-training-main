@@ -11,6 +11,7 @@ import {CurrencyService} from "./currency.service";
 export class CurrencySwitcherComponent {
   service = inject(CurrencyService);
   showItems = false;
+  price = 0;
 
   changeCurrency(currency: Currency): void {
     this.service.currency.set(currency);

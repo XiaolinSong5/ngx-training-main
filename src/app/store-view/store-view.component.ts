@@ -20,7 +20,7 @@ import {CurrencySwitcherComponent} from "../currency-switcher/currency-switcher.
   imports: [JumbotronComponent,
     LicensePlateComponent,
     HighlightDirective, AsyncPipe,
-    DialogComponent, CurrencySwitcherComponent, CurrencyPipe],
+    DialogComponent, CurrencySwitcherComponent],
   templateUrl: './store-view.component.html',
   styleUrl: './store-view.component.css'
 })

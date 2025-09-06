@@ -26,14 +26,22 @@ export class CurrencyService {
     USD: 1,
   });
 
-  readonly currency = signal<Currency>('USD');
+ currency = signal<Currency>('USD');
   constructor() { }
   readonly currentExchangeRate = computed(
-    () => this.exchangeRates()[this.currentCurrency().code]
+    () => {
+      console.log('computing: this.currentcurrency()' + this.currentCurrency());
+      console.log('computing: this.exchangeRates()' + this.exchangeRates());
+      console.log('computing: this.exchangeRates()[this.currentCurrency().code]' + this.exchangeRates()[this.currentCurrency().code]);
+      return this.exchangeRates()[this.currency()];
+    }
   );
 
   setCurrency(currencyCode: string): void {
     const newCurrency = this.currencies().find((c) => c.code === currencyCode);
-    if (newCurrency) this.currentCurrency.set(newCurrency);
+    if (newCurrency) {
+      this.currentCurrency.set(newCurrency);
+    console.log('crrRate', this.currentExchangeRate());
+    }
   }
 }
